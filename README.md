@@ -8,6 +8,8 @@ APIKI (API Knowledge Integration) is a powerful package for interacting with API
 - **Direct API Client**: Programmatically interact with APIs using a simple client interface
 - **CLI Tool**: Command-line interface for interacting with APIs
 - **OpenAPI Integration**: Automatically discovers API capabilities using OpenAPI specifications
+- **Docker Support**: Run APIKI in a containerized environment
+- **Just Command Runner**: Simplified development workflow with just commands
 
 ## Installation
 
@@ -81,6 +83,42 @@ python -m apiki.cli client post /api/items --data '{"name": "Test Item", "descri
 python -m apiki.cli client endpoints
 ```
 
+### Using Docker
+
+```bash
+# Build the Docker image
+docker build -t apiki .
+
+# Run APIKI in a Docker container
+docker run --rm -e OPENAI_API_KEY=your_api_key apiki agent "List all available endpoints"
+
+# Using Docker Compose
+docker-compose up --build
+```
+
+### Using Just Command Runner
+
+```bash
+# Install Just (macOS)
+brew install just
+
+# Install Just (using Cargo)
+cargo install just
+
+# List all available commands
+just
+
+# Run tests
+just test
+
+# Format code and run linting
+just check
+
+# Build and run with Docker
+just docker-build
+just docker-run agent "List all available endpoints"
+```
+
 ## Configuration
 
 ### API Agent Configuration
@@ -110,9 +148,36 @@ python -m apiki.cli client endpoints
 | `verify_ssl`            | Whether to verify SSL certificates                | `True`                            |
 | `verbose`               | Whether to enable verbose logging                 | `True`                            |
 
+## Development
+
+### Using Just Command Runner
+
+The project includes a `justfile` with common development tasks:
+
+```bash
+# Install dependencies
+just install
+
+# Run tests
+just test
+
+# Check code quality (format, lint, type check)
+just check
+
+# Build Docker image
+just docker-build
+
+# Run in Docker
+just docker-run <command>
+```
+
+See the `justfile` for a complete list of available commands.
+
 ## Requirements
 
-- Python 3.8+
+- Python 3.10+
 - LangChain
 - OpenAI API key (for agent mode)
-- An API with an OpenAPI specification 
+- An API with an OpenAPI specification
+- Docker (optional, for containerized usage)
+- Just command runner (optional, for simplified development workflow)

@@ -67,4 +67,4 @@ venv.bak/
 .DS_Store
 
 # Poetry
-poetry.lock 
+poetry.lock
