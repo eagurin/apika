@@ -1,4 +1,4 @@
-.PHONY: install venv test coverage format sort-imports lint type-check check docker-build docker-run docker-compose-run clean pre-commit-install pre-commit-run
+.PHONY: install venv test coverage format sort-imports lint type-check check docker-build docker-run docker-compose-run clean pre-commit-install pre-commit-run setup dev-setup full-check build-and-run deploy all
 
 # Install dependencies
 install:
@@ -35,6 +35,18 @@ type-check:
 # Run all code quality checks
 check: format sort-imports lint type-check
 
+# Build Docker image
+docker-build:
+	docker build -t apiki .
+
+# Run in Docker
+docker-run:
+	docker run --rm apiki $(ARGS)
+
+# Run with Docker Compose
+docker-compose-run:
+	docker-compose up --build
+
 # Clean up build artifacts and cache
 clean:
 	rm -rf dist build *.egg-info .coverage htmlcov .pytest_cache
@@ -51,6 +63,32 @@ pre-commit-install:
 # Run pre-commit hooks on all files
 pre-commit-run:
 	poetry run pre-commit run --all-files
+
+# --- Grouped Commands for Sequential Tasks ---
+
+# Initial setup: install dependencies and setup pre-commit
+setup: install pre-commit-install
+	@echo "✅ Setup completed."
+
+# Complete development setup: dependencies, pre-commit, and virtual environment
+dev-setup: clean install pre-commit-install venv
+	@echo "✅ Development environment setup completed."
+
+# Run full code quality check and tests with coverage
+full-check: check coverage
+	@echo "✅ All checks passed."
+
+# Build and run the application in Docker
+build-and-run: docker-build docker-run
+	@echo "✅ Application built and running in Docker."
+
+# Deploy: run checks, build and run in Docker
+deploy: check test docker-build docker-compose-run
+	@echo "✅ Application deployed with Docker Compose."
+
+# Run all steps: setup, check, test, and deploy
+all: setup check test coverage deploy
+	@echo "✅ All tasks completed successfully."
 
 # Help
 help:
@@ -70,4 +108,12 @@ help:
 	@echo "  clean                - Clean up build artifacts and cache"
 	@echo "  pre-commit-install   - Install pre-commit hooks"
 	@echo "  pre-commit-run       - Run pre-commit hooks on all files"
+	@echo ""
+	@echo "Grouped commands for sequential tasks:"
+	@echo "  setup                - Install dependencies and setup pre-commit"
+	@echo "  dev-setup            - Complete development environment setup"
+	@echo "  full-check           - Run all code quality checks and tests with coverage"
+	@echo "  build-and-run        - Build and run the application in Docker"
+	@echo "  deploy               - Run checks, tests, build and run with Docker Compose"
+	@echo "  all                  - Run all steps: setup, check, test, and deploy"
 	@echo "  help                 - Show this help message" 
