@@ -1,8 +1,8 @@
-# 🚀 APIKI - API Knowledge Integration
+# 🚀 apiki - api knowledge integration
 
-> **Unleash the power of AI to conquer any API!** APIKI is a revolutionary tool that bridges the gap between natural language and APIs with cutting-edge LLM technology.
+> **Unleash the power of AI to conquer any API!** apiki is a revolutionary tool that bridges the gap between natural language and APIs with cutting-edge LLM technology.
 
-APIKI (API Knowledge Integration) is a state-of-the-art framework that transforms how developers interact with APIs, combining the intelligence of LangChain agents with the structure of OpenAPI specifications for unprecedented API interaction capabilities.
+apiki (api knowledge integration) is a state-of-the-art framework that transforms how developers interact with APIs, combining the intelligence of LangChain agents with the structure of OpenAPI specifications for unprecedented API interaction capabilities.
 
 ## ✨ Supercharged Features
 
@@ -10,7 +10,6 @@ APIKI (API Knowledge Integration) is a state-of-the-art framework that transform
 - 🔌 **Seamless API Client**: Programmatically interact with APIs using an elegantly simple yet powerful client interface
 - 💻 **Intelligent CLI**: Command-line interface with natural language processing for API interactions
 - 📚 **OpenAPI Superpowers**: Automatically discovers and adapts to API capabilities using OpenAPI specifications
-- 🐳 **Containerization Ready**: Deploy with Docker for maximum portability and scalability
 - ⚡ **Performance Optimized**: Built for speed and reliability in production environments
 
 ## 🛠️ Quick Installation
@@ -85,42 +84,6 @@ python -m apiki.cli client post /api/items --data '{"name": "Test Item", "descri
 python -m apiki.cli client endpoints
 ```
 
-### 🐳 Docker Power
-
-```bash
-# Build the Docker image
-docker build -t apiki .
-
-# Run APIKI in a Docker container
-docker run --rm -e OPENAI_API_KEY=your_api_key apiki agent "List all available endpoints"
-
-# Using Docker Compose
-docker-compose up --build
-```
-
-### ⚙️ Just Command Runner
-
-```bash
-# Install Just (macOS)
-brew install just
-
-# Install Just (using Cargo)
-cargo install just
-
-# List all available commands
-just
-
-# Run tests
-just test
-
-# Format code and run linting
-just check
-
-# Build and run with Docker
-just docker-build
-just docker-run agent "List all available endpoints"
-```
-
 ## 🔧 Advanced Configuration
 
 ### 🧠 API Agent Configuration
@@ -150,34 +113,9 @@ just docker-run agent "List all available endpoints"
 | `verify_ssl`            | Whether to verify SSL certificates                | `True`                            |
 | `verbose`               | Whether to enable verbose logging                 | `True`                            |
 
-## 🧪 Development
-
-### ⚡ Using Just Command Runner
-
-The project includes a `justfile` with common development tasks:
-
-```bash
-# Install dependencies
-just install
-
-# Run tests
-just test
-
-# Check code quality (format, lint, type check)
-just check
-
-# Build Docker image
-just docker-build
-
-# Run in Docker
-just docker-run <command>
-```
-
-See the `justfile` for a complete list of available commands.
-
 ## 🔥 Technical Achievements
 
-- **Zero-Shot API Interaction**: APIKI can interact with any API without prior training, using only the OpenAPI specification
+- **Zero-Shot API Interaction**: apiki can interact with any API without prior training, using only the OpenAPI specification
 - **LLM-Powered Intelligence**: Leverages state-of-the-art language models to understand and execute complex API operations
 - **Dynamic Request Composition**: Automatically constructs API requests based on natural language instructions
 - **Schema-Aware Processing**: Intelligently parses and validates API schemas for accurate interactions
@@ -191,11 +129,9 @@ See the `justfile` for a complete list of available commands.
 - 🔗 LangChain ecosystem
 - 🔑 OpenAI API key (for agent mode)
 - 📄 An API with an OpenAPI specification
-- 🐳 Docker (optional, for containerized usage)
-- ⚙️ Just command runner (optional, for simplified development workflow)
 
-## 🌟 Why APIKI?
+## 🌟 Why apiki?
 
-APIKI represents a quantum leap in API interaction technology. By combining advanced LLM capabilities with structured API specifications, it enables developers to interact with APIs in ways previously thought impossible. Whether you're building complex integrations, exploring new APIs, or automating workflows, APIKI provides the intelligence and flexibility needed to master any API challenge.
+apiki represents a quantum leap in API interaction technology. By combining advanced LLM capabilities with structured API specifications, it enables developers to interact with APIs in ways previously thought impossible. Whether you're building complex integrations, exploring new APIs, or automating workflows, apiki provides the intelligence and flexibility needed to master any API challenge.
 
-**Ready to revolutionize how you work with APIs? Start using APIKI today!**
+**Ready to revolutionize how you work with APIs? Start using apiki today!**
